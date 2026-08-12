@@ -1,0 +1,6 @@
+@ElsInt.Api_HostAddress = http://localhost:5088
+
+GET {{ElsInt.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

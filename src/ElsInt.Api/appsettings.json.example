@@ -1,0 +1,45 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=tcp:YOUR_SERVER,1433;Database=YOUR_DB;User Id=YOUR_USER;Password=YOUR_PASSWORD;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=True;"
+  },
+  "Jwt": {
+    "Key": "REPLACE_WITH_A_LONG_RANDOM_SECRET_KEY",
+    "Issuer": "ElsInt",
+    "Audience": "ElsInt",
+    "ExpiresMinutes": "480"
+  },
+  "CorvusPay": {
+    "StoreId": "sandbox-store",
+    "SecretKey": "sandbox-secret",
+    "Endpoint": "https://testcps.corvuspay.com/payment/form"
+  },
+  "Storefront": {
+    "BaseUrl": "https://elsintdm.rs"
+  },
+  "Cors": {
+    "Origins": [
+      "https://elsintdm.rs",
+      "https://www.elsintdm.rs",
+      "https://preeminent-biscuit-c8308b.netlify.app",
+      "http://localhost:5173"
+    ]
+  },
+  "Email": {
+    "Enabled": true,
+    "NotifyTo": "elsintdm@gmail.com",
+    "SmtpHost": "smtp.gmail.com",
+    "SmtpPort": 587,
+    "SmtpUser": "elsintdm@gmail.com",
+    "SmtpPass": "",
+    "From": "elsintdm@gmail.com",
+    "FromName": "ElsInt",
+    "UseSsl": true
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}

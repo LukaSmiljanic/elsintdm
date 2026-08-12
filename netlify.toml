@@ -1,0 +1,48 @@
+[build]
+  base = "web"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  VITE_SITE_URL = "https://elsintdm.rs"
+  VITE_API_URL = "https://api.elsintdm.rs"
+
+# Proxy SEO + product images to API (update host if different)
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "https://api.elsintdm.rs/sitemap.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "https://api.elsintdm.rs/robots.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/images/*"
+  to = "https://api.elsintdm.rs/images/:splat"
+  status = 200
+  force = true
+
+# SPA fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Kept in sync with web/public/_headers, which is what applies on a manual dist upload.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

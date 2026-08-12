@@ -1,0 +1,4 @@
+/sitemap.xml  https://api.elsintdm.rs/sitemap.xml  200
+/robots.txt   https://api.elsintdm.rs/robots.txt   200
+/images/*     https://api.elsintdm.rs/images/:splat 200
+/*            /index.html                           200
