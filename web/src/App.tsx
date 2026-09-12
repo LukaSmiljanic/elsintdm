@@ -9,6 +9,7 @@ import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { PrivacyPage, ThankYouPage } from './pages/MiscPages';
 import { BookingPage } from './pages/BookingPage';
+import { ServisKlimePage, UgradnjaKlimePage } from './pages/ServicePages';
 import { AdminApp } from './pages/AdminApp';
 import './styles.css';
 
@@ -28,6 +29,8 @@ export default function App() {
               <Route path="korpa" element={<CartPage />} />
               <Route path="checkout" element={<CheckoutPage />} />
               <Route path="zakazivanje" element={<BookingPage />} />
+              <Route path="ugradnja-klime-novi-sad" element={<UgradnjaKlimePage />} />
+              <Route path="servis-klime-novi-sad" element={<ServisKlimePage />} />
               <Route path="hvala" element={<ThankYouPage />} />
               <Route path="privatnost" element={<PrivacyPage />} />
               <Route path="admin/*" element={<AdminApp />} />

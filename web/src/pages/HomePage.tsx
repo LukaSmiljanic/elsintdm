@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api, type Category, type PagedResult, type ProductListItem, formatRsd } from '../api';
+import { FaqList } from '../components/Faq';
 import { HomeSeo } from '../components/Seo';
+import { HOME_FAQ } from '../seo';
 
 export function HomePage() {
   const categories = useQuery({
@@ -20,14 +22,14 @@ export function HomePage() {
         <div className="shell">
           <div>
             <div className="hero-kicker">Novi Sad · Srbija</div>
-            <h1>Montaža i prodaja klima uređaja</h1>
+            <h1>Ugradnja i servis klime u Novom Sadu</h1>
             <p>
-              Profesionalna ugradnja, servis i prodaja - obezbedite svežinu tokom cele godine.
-              Brz sajt, jasne cene, bez čekanja.
+              Montaža split sistema, pranje, dopuna freona i prodaja klima uređaja.
+              Dolazimo na vašu adresu — zakažite termin ili pozovite.
             </p>
             <div className="row hero-cta">
-              <Link className="btn" to="/katalog">Pogledaj katalog</Link>
-              <a className="btn secondary" href="tel:+381677627904">Pozovite nas</a>
+              <Link className="btn" to="/zakazivanje">Zakažite termin</Link>
+              <a className="btn secondary" href="tel:+381677627904">+381 67 762 7904</a>
             </div>
           </div>
           <aside className="hero-panel">
@@ -42,18 +44,18 @@ export function HomePage() {
 
       <div className="shell">
         <section className="services">
-          <article className="service-card">
-            <h2>Montaža klima</h2>
-            <p>Ugradnja split sistema, sa dogovorenim terminom i čistim završetkom.</p>
-          </article>
-          <article className="service-card">
-            <h2>Servis klima uređaja</h2>
-            <p>Redovan servis, čišćenje, dopuna freona i dijagnostika - da klima traje i troši manje.</p>
-          </article>
-          <article className="service-card">
-            <h2>Prodaja klima</h2>
-            <p>Inverter i on/off modeli sa jasnim cenama. Online porudžbina sa dostavom ili dostavom + montažom.</p>
-          </article>
+          <Link to="/ugradnja-klime-novi-sad" className="service-card">
+            <h2>Ugradnja klime Novi Sad</h2>
+            <p>Montaža split i inverter sistema, sa dogovorenim terminom i čistim završetkom.</p>
+          </Link>
+          <Link to="/servis-klime-novi-sad" className="service-card">
+            <h2>Servis klime Novi Sad</h2>
+            <p>Pranje, dijagnostika, dopuna freona i popravka — da klima hladi i troši manje.</p>
+          </Link>
+          <Link to="/katalog" className="service-card">
+            <h2>Prodaja klima uređaja</h2>
+            <p>Inverter i on/off modeli sa jasnim cenama. Dostava ili dostava plus montaža.</p>
+          </Link>
         </section>
 
         <section style={{ marginBottom: '2rem' }}>
@@ -95,17 +97,26 @@ export function HomePage() {
 
         <section className="panel stack" style={{ marginBottom: '2rem' }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--display)', textTransform: 'uppercase', color: 'var(--navy)' }}>
-            Klima uređaji - prodaja i montaža
+            Klima servis i montaža u Novom Sadu
           </h2>
           <p className="muted" style={{ margin: 0, maxWidth: '70ch' }}>
-            ElsInt nudi prodaju i montažu klima uređaja širom Srbije: split sisteme, inverter modele
-            (9000-24000 BTU) i mobilne klime. Uporedite cene u katalogu, poručite online (pouzeće ili virman)
-            i zakažite ugradnju. Savetujemo oko snage uređaja prema kvadraturi prostorije.
+            ElsInt je lokalna firma za ugradnju, servis i prodaju klima uređaja u Novom Sadu.
+            Radimo split i inverter modele (9000–24000 BTU), pranje unutrašnje i spoljne jedinice
+            i montažu na stanovima i kućama. Dolazimo na Liman, Telep, Detelinaru, Petrovaradin,
+            Veternik, Futog i ostale delove grada. Uporedite cene u katalogu, poručite online
+            ili zakažite dolazak.
           </p>
           <div className="row">
-            <Link className="btn" to="/katalog">Katalog</Link>
-            <Link className="btn secondary on-light" to="/checkout">Naruči online</Link>
+            <Link className="btn" to="/zakazivanje">Zakažite uslugu</Link>
+            <Link className="btn secondary on-light" to="/katalog">Katalog klima</Link>
           </div>
+        </section>
+
+        <section className="panel stack" style={{ marginBottom: '2rem' }}>
+          <h2 style={{ margin: 0, fontFamily: 'var(--display)', textTransform: 'uppercase', color: 'var(--navy)' }}>
+            Česta pitanja
+          </h2>
+          <FaqList items={HOME_FAQ} />
         </section>
       </div>
     </>

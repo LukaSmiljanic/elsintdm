@@ -5,6 +5,8 @@ import {
   privacySeo,
   productSeo,
   resolveSeo,
+  servisSeo,
+  ugradnjaSeo,
   type SeoCategory,
   type SeoInput,
   type SeoProduct,
@@ -90,22 +92,36 @@ export async function collectRoutes(): Promise<PrerenderedRoute[]> {
     {
       path: '/',
       head: headHtml(homeSeo()),
-      body: bodyHtml('ElsInt - klima uređaji, montaža i servis', [
-        'Prodaja, montaža i servis klima uređaja. Split i mobilne klime, jasne cene, dostava i ugradnja.',
+      body: bodyHtml('Ugradnja i servis klime u Novom Sadu', [
+        'Montaža split sistema, pranje, dopuna freona i prodaja klima uređaja. Dolazimo na vašu adresu u Novom Sadu.',
       ]),
     },
     {
       path: '/katalog',
       head: headHtml(catalogSeo()),
       body: bodyHtml('Katalog klima uređaja', [
-        'Split, inverter i mobilne klime. Filtrirajte po brendu, snazi i energetskoj klasi.',
+        'Split, inverter i mobilne klime za Novi Sad. Filtrirajte po brendu, snazi i energetskoj klasi.',
+      ]),
+    },
+    {
+      path: '/ugradnja-klime-novi-sad',
+      head: headHtml(ugradnjaSeo()),
+      body: bodyHtml('Ugradnja klime Novi Sad', [
+        'Profesionalna montaža split i inverter klima uređaja u Novom Sadu. Dogovoreni termin i čist završetak.',
+      ]),
+    },
+    {
+      path: '/servis-klime-novi-sad',
+      head: headHtml(servisSeo()),
+      body: bodyHtml('Servis klime Novi Sad', [
+        'Pranje, dijagnostika, dopuna freona i popravka klima uređaja na vašoj adresi u Novom Sadu.',
       ]),
     },
     {
       path: '/zakazivanje',
       head: headHtml(bookingSeo()),
-      body: bodyHtml('Zakazivanje usluge', [
-        'Izaberite uslugu, dan i sat. Termin se privremeno rezerviše, a potvrda ide pozivom.',
+      body: bodyHtml('Zakazivanje servisa i montaže klime Novi Sad', [
+        'Zakažite pranje, servis ili ugradnju klime u Novom Sadu. Termin se privremeno rezerviše, a potvrda ide pozivom.',
       ]),
     },
     {

@@ -216,9 +216,10 @@ export function BookingPage() {
       <div className="booking-layout">
         <div className="panel stack booking-main">
           <div>
-            <h1 style={{ fontFamily: 'var(--display)', margin: 0 }}>Zakazivanje usluge</h1>
+            <h1 style={{ fontFamily: 'var(--display)', margin: 0 }}>Zakazivanje servisa i montaže — Novi Sad</h1>
             <p className="muted" style={{ margin: '0.4rem 0 0' }}>
-              Izaberite uslugu, dan i sat. Termin se privremeno rezerviše; potvrda ide pozivom (min. 4h unapred).
+              Zakažite pranje, servis ili ugradnju klime u Novom Sadu. Izaberite dan i sat;
+              termin se privremeno rezerviše, potvrda ide pozivom.
             </p>
           </div>
 

@@ -67,7 +67,10 @@ export function CatalogPage() {
       <h1 style={{ fontFamily: 'var(--display)', margin: 0, textTransform: 'uppercase', color: 'var(--navy)' }}>
         {category ? category.name : 'Katalog klima uređaja'}
       </h1>
-      {category?.description && <p className="muted" style={{ margin: 0 }}>{category.description}</p>}
+      <p className="muted" style={{ margin: 0 }}>
+        {category?.description ||
+          'Split, inverter i mobilne klime za Novi Sad — jasne cene, dostava i montaža.'}
+      </p>
       <div className="grid layout-2">
         <aside className="filters">
           <strong>Filteri</strong>

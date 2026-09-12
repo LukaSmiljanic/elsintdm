@@ -38,6 +38,9 @@ public class SeoController : ControllerBase
         sb.AppendLine("""<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">""");
         AppendUrl(sb, $"{baseUrl}/", "daily", "1.0");
         AppendUrl(sb, $"{baseUrl}/katalog", "daily", "0.95");
+        AppendUrl(sb, $"{baseUrl}/ugradnja-klime-novi-sad", "weekly", "0.95");
+        AppendUrl(sb, $"{baseUrl}/servis-klime-novi-sad", "weekly", "0.95");
+        AppendUrl(sb, $"{baseUrl}/zakazivanje", "weekly", "0.8");
         AppendUrl(sb, $"{baseUrl}/privatnost", "yearly", "0.2");
 
         foreach (var cat in categories)

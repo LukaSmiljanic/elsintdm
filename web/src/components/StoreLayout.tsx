@@ -1,15 +1,27 @@
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { useCart } from '../cart';
 
 export function StoreLayout() {
   const { count } = useCart();
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const id = decodeURIComponent(hash.slice(1));
+      const t = window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+      return () => window.clearTimeout(t);
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
   return (
     <>
       <div className="topbar">
         <div className="shell">
-          <span>Prodaja · montaža · servis klima uređaja</span>
+          <span>Ugradnja i servis klime · Novi Sad</span>
           <span className="row" style={{ gap: '1rem' }}>
             <a href="tel:+381677627904">+381 67 762 7904</a>
             <Link to="/katalog">Katalog</Link>
@@ -23,6 +35,8 @@ export function StoreLayout() {
           </Link>
           <nav className="nav-links">
             <NavLink to="/" end>Početna</NavLink>
+            <NavLink to="/ugradnja-klime-novi-sad">Ugradnja</NavLink>
+            <NavLink to="/servis-klime-novi-sad">Servis</NavLink>
             <NavLink to="/katalog">Katalog</NavLink>
             <NavLink to="/zakazivanje">Zakazivanje</NavLink>
             <NavLink to="/korpa">Korpa{count > 0 && <span className="badge">{count}</span>}</NavLink>
@@ -37,21 +51,27 @@ export function StoreLayout() {
           <div>
             <img src="/images/brand/elsint-logo.png" alt="ElsInt" style={{ height: 72, marginBottom: 12 }} />
             <p style={{ margin: 0 }}>
-              ElsInt - prodaja, montaža i servis klima uređaja. Brza ponuda, jasne cene, pouzdana ugradnja.
+              ElsInt — ugradnja, montaža i servis klima uređaja u Novom Sadu. Jasne cene, dogovoreni termin.
+            </p>
+            <p style={{ margin: '0.6rem 0 0' }}>
+              <a href="tel:+381677627904">+381 67 762 7904</a>
+              <span> · Novi Sad</span>
             </p>
           </div>
           <div>
             <h4>Montaža</h4>
             <ul>
-              <li><Link to="/katalog">Redovne montaže</Link></li>
-              <li><Link to="/checkout">Poruči sa montažom</Link></li>
+              <li><Link to="/ugradnja-klime-novi-sad">Ugradnja klime Novi Sad</Link></li>
+              <li><Link to="/katalog">Katalog sa montažom</Link></li>
+              <li><Link to="/zakazivanje">Zakaži montažu</Link></li>
             </ul>
           </div>
           <div>
             <h4>Servis</h4>
             <ul>
+              <li><Link to="/servis-klime-novi-sad">Servis klime Novi Sad</Link></li>
+              <li><Link to="/servis-klime-novi-sad#pranje">Pranje klime</Link></li>
               <li><Link to="/zakazivanje">Zakaži termin</Link></li>
-              <li><a href="tel:+381677627904">Hitne intervencije</a></li>
             </ul>
           </div>
           <div>
