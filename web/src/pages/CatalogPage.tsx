@@ -13,6 +13,24 @@ const CATEGORY_FILTERS = [
   { slug: 'mobilni', label: 'Mobilni' },
 ];
 
+/** Products query string; the prerender step uses it too, so its cache key matches the page's. */
+export function catalogProductsQuery(f: {
+  categorySlug?: string;
+  brandSlug?: string | null;
+  coolingBtu?: string | null;
+  sortBy?: string;
+  search?: string;
+}) {
+  const query = new URLSearchParams();
+  if (f.categorySlug) query.set('categorySlug', f.categorySlug);
+  if (f.brandSlug) query.set('brandSlug', f.brandSlug);
+  if (f.coolingBtu) query.set('coolingBtu', f.coolingBtu);
+  if (f.sortBy) query.set('sortBy', f.sortBy);
+  if (f.search) query.set('search', f.search);
+  query.set('pageSize', '24');
+  return query;
+}
+
 export function CatalogPage() {
   const { slug } = useParams();
   const [params, setParams] = useSearchParams();
@@ -28,17 +46,11 @@ export function CatalogPage() {
     queryFn: () => api<Category[]>('/api/catalog/categories'),
   });
 
-  const query = new URLSearchParams();
-  if (categorySlug) query.set('categorySlug', categorySlug);
   const brandSlug = params.get('brand');
   const coolingBtu = params.get('btu');
   const sortBy = params.get('sort') ?? 'price_asc';
   const search = params.get('q') ?? '';
-  if (brandSlug) query.set('brandSlug', brandSlug);
-  if (coolingBtu) query.set('coolingBtu', coolingBtu);
-  if (sortBy) query.set('sortBy', sortBy);
-  if (search) query.set('search', search);
-  query.set('pageSize', '24');
+  const query = catalogProductsQuery({ categorySlug, brandSlug, coolingBtu, sortBy, search });
 
   const products = useQuery({
     queryKey: ['products', query.toString()],

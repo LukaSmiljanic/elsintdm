@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && npm run prerender && node -e \"const f=require('fs');for(const n of ['_redirects','_headers'])f.copyFileSync('public/'+n,'dist/'+n)\"",
-    "prerender": "vite build --ssr src/prerender/collect.ts --outDir .prerender && node scripts/prerender.mjs",
+    "prerender": "vite build --ssr src/prerender/collect.tsx --outDir .prerender && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

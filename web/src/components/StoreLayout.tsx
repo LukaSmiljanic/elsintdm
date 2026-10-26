@@ -70,7 +70,7 @@ export function StoreLayout() {
             <h4>Servis</h4>
             <ul>
               <li><Link to="/servis-klime-novi-sad">Servis klime Novi Sad</Link></li>
-              <li><Link to="/servis-klime-novi-sad#pranje">Pranje klime</Link></li>
+              <li><Link to="/pranje-klime-novi-sad">Pranje klime Novi Sad</Link></li>
               <li><Link to="/zakazivanje">Zakaži termin</Link></li>
             </ul>
           </div>
@@ -94,7 +94,10 @@ export function StoreLayout() {
 }
 
 function CookieBanner() {
-  const [visible, setVisible] = useState(() => localStorage.getItem('elsint_consent') !== '1');
+  // No localStorage during prerender: leave the banner out of the static HTML.
+  const [visible, setVisible] = useState(
+    () => typeof localStorage !== 'undefined' && localStorage.getItem('elsint_consent') !== '1'
+  );
   if (!visible) return null;
 
   const accept = async (accepted: boolean) => {

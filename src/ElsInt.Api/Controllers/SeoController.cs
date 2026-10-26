@@ -40,6 +40,7 @@ public class SeoController : ControllerBase
         AppendUrl(sb, $"{baseUrl}/katalog", "daily", "0.95");
         AppendUrl(sb, $"{baseUrl}/ugradnja-klime-novi-sad", "weekly", "0.95");
         AppendUrl(sb, $"{baseUrl}/servis-klime-novi-sad", "weekly", "0.95");
+        AppendUrl(sb, $"{baseUrl}/pranje-klime-novi-sad", "weekly", "0.9");
         AppendUrl(sb, $"{baseUrl}/zakazivanje", "weekly", "0.8");
         AppendUrl(sb, $"{baseUrl}/privatnost", "yearly", "0.2");
 

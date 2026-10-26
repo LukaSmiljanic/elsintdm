@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import { FaqList } from '../components/Faq';
 import { Seo } from '../components/Seo';
 import {
+  PRANJE_FAQ,
   SERVIS_FAQ,
   UGRADNJA_FAQ,
+  pranjeSeo,
   servisSeo,
   ugradnjaSeo,
 } from '../seo';
@@ -156,9 +158,10 @@ export function ServisKlimePage() {
           <h2 id="pranje">Pranje klime Novi Sad</h2>
           <p>
             Redovno pranje unutrašnje i spoljne jedinice vraća protok vazduha, smanjuje potrošnju
-            i uklanja neprijatan miris. Peremo filtere, isparivač i kondenzator. Uslugu možete
-            rezervisati kao „Pranje klime“ na stranici{' '}
-            <Link to="/zakazivanje">zakazivanja</Link>.
+            i uklanja neprijatan miris. Peremo filtere, isparivač i kondenzator. Više o tome šta
+            obuhvata{' '}
+            <Link to="/pranje-klime-novi-sad">pranje klime u Novom Sadu</Link>, a termin možete
+            rezervisati na stranici <Link to="/zakazivanje">zakazivanja</Link>.
           </p>
 
           <section className="services seo-points">
@@ -204,6 +207,76 @@ export function ServisKlimePage() {
         <section className="panel stack" style={{ marginTop: '2rem' }}>
           <h2 className="seo-h2">Česta pitanja o servisu klime</h2>
           <FaqList items={SERVIS_FAQ} />
+        </section>
+      </div>
+    </>
+  );
+}
+
+export function PranjeKlimePage() {
+  return (
+    <>
+      <Seo {...pranjeSeo()} />
+      <ServiceHero
+        kicker="ElsInt · Novi Sad"
+        title="Pranje klime Novi Sad"
+        lead="Dubinsko pranje unutrašnje i spoljne jedinice na vašoj adresi u Novom Sadu. Čist vazduh, bolje hlađenje i manja potrošnja struje."
+      />
+      <div className="shell seo-page">
+        <article className="seo-copy stack">
+          <p>
+            <strong>Pranje klime u Novom Sadu</strong> radimo na adresi — u stanovima,
+            kućama i poslovnim prostorima. Prljav filter i isparivač smanjuju protok vazduha,
+            povećavaju potrošnju i šire neprijatan miris po prostoriji. Redovno pranje vraća
+            klimu u stanje u kakvom treba da radi.
+          </p>
+
+          <h2>Šta obuhvata pranje klime</h2>
+          <section className="services seo-points">
+            <article className="service-card">
+              <h3>Unutrašnja jedinica</h3>
+              <p>Pranje filtera, isparivača i ventilatora, uz zaštitu zida i poda od prljave vode.</p>
+            </article>
+            <article className="service-card">
+              <h3>Spoljna jedinica</h3>
+              <p>Čišćenje kondenzatora od prašine, lišća i nečistoće, kada joj se bezbedno može prići.</p>
+            </article>
+            <article className="service-card">
+              <h3>Provera rada</h3>
+              <p>Provera odvoda kondenza i rada uređaja posle pranja. Ako primetimo kvar, kažemo vam odmah.</p>
+            </article>
+          </section>
+
+          <h2>Zašto je redovno pranje važno</h2>
+          <ul className="seo-bullets">
+            <li>Klima hladi i greje jače, jer vazduh slobodno prolazi kroz isparivač.</li>
+            <li>Manja potrošnja struje — kompresor ne radi duže nego što mora.</li>
+            <li>Nema ustajalog mirisa i buđi u prostoriji.</li>
+            <li>Duži vek uređaja i manje kvarova usred sezone.</li>
+          </ul>
+
+          <h2>Pranje klime po Novom Sadu</h2>
+          <p>
+            Dolazimo na Liman, Telep, Detelinaru, Grbavicu, Petrovaradin, Veternik, Futog i
+            ostale delove grada. Pranje možete zakazati zajedno sa{' '}
+            <Link to="/servis-klime-novi-sad">servisom klime</Link> ili dopunom freona, ako je
+            potrebno.
+          </p>
+          <AreaList />
+
+          <div className="row" style={{ marginTop: '0.5rem' }}>
+            <Link className="btn" to="/zakazivanje">
+              Zakažite pranje
+            </Link>
+            <Link className="btn secondary on-light" to="/servis-klime-novi-sad">
+              Servis klime
+            </Link>
+          </div>
+        </article>
+
+        <section className="panel stack" style={{ marginTop: '2rem' }}>
+          <h2 className="seo-h2">Česta pitanja o pranju klime</h2>
+          <FaqList items={PRANJE_FAQ} />
         </section>
       </div>
     </>

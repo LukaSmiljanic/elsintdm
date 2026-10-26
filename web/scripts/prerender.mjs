@@ -18,11 +18,12 @@ for (const route of routes) {
     .replace(/<!--seo-->[\s\S]*?<!--\/seo-->/, () => `<!--seo-->\n    ${route.head}\n    <!--/seo-->`)
     .replace('<!--app-->', () => route.body);
 
-  // "/" is dist/index.html, everything else becomes dist/<path>/index.html so Netlify
-  // serves the static file and only falls back to the SPA for unknown URLs.
+  // "/" is dist/index.html, everything else becomes dist/<path>.html. Netlify serves that at
+  // /<path> with a 200; a dist/<path>/index.html would instead 301 to /<path>/, which
+  // contradicts the canonical URL and the sitemap (both without the trailing slash).
   const target = route.path === '/'
     ? join(dist, 'index.html')
-    : join(dist, route.path.replace(/^\//, ''), 'index.html');
+    : join(dist, `${route.path.replace(/^\//, '')}.html`);
 
   await mkdir(dirname(target), { recursive: true });
   await writeFile(target, html, 'utf8');

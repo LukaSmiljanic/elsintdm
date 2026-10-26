@@ -1,6 +1,25 @@
-﻿import { Link, useSearchParams } from 'react-router-dom';
+﻿import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Seo } from '../components/Seo';
 import { privacySeo } from '../seo';
+
+/** Unknown URLs get a noindex page instead of a silent redirect home, so Google drops them rather than indexing duplicates of the homepage. */
+export function NotFoundPage() {
+  const { pathname } = useLocation();
+  return (
+    <div className="shell page-pad stack" style={{ maxWidth: 640 }}>
+      <Seo title="Stranica nije pronađena" path={pathname} noindex />
+      <h1 style={{ fontFamily: 'var(--display)', margin: 0, textTransform: 'uppercase', color: 'var(--navy)' }}>
+        Stranica nije pronađena
+      </h1>
+      <p className="muted">Stranica koju tražite ne postoji ili je premeštena.</p>
+      <div className="row">
+        <Link className="btn" to="/">Početna</Link>
+        <Link className="btn secondary on-light" to="/katalog">Katalog klima</Link>
+        <Link className="btn secondary on-light" to="/zakazivanje">Zakazivanje</Link>
+      </div>
+    </div>
+  );
+}
 
 export function ThankYouPage() {
   const [params] = useSearchParams();

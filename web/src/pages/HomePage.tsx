@@ -101,7 +101,8 @@ export function HomePage() {
           </h2>
           <p className="muted" style={{ margin: 0, maxWidth: '70ch' }}>
             ElsInt je lokalna firma za ugradnju, servis i prodaju klima uređaja u Novom Sadu.
-            Radimo split i inverter modele (9000–24000 BTU), pranje unutrašnje i spoljne jedinice
+            Radimo split i inverter modele (9000–24000 BTU),{' '}
+            <Link to="/pranje-klime-novi-sad">pranje klime</Link> (unutrašnje i spoljne jedinice)
             i montažu na stanovima i kućama. Dolazimo na Liman, Telep, Detelinaru, Petrovaradin,
             Veternik, Futog i ostale delove grada. Uporedite cene u katalogu, poručite online
             ili zakažite dolazak.

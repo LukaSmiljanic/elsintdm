@@ -172,7 +172,7 @@ export function organizationJsonLd() {
           itemOffered: {
             '@type': 'Service',
             name: 'Pranje klime',
-            url: `${SITE_URL}/servis-klime-novi-sad#pranje`,
+            url: `${SITE_URL}/pranje-klime-novi-sad`,
           },
         },
       ],
@@ -445,6 +445,51 @@ export function servisSeo(): SeoInput {
       breadcrumbJsonLd([
         { name: 'Početna', path: '/' },
         { name: 'Servis klime Novi Sad', path },
+      ]),
+    ],
+  };
+}
+
+export const PRANJE_FAQ: FaqItem[] = [
+  {
+    q: 'Koliko često treba prati klimu?',
+    a: 'Bar jednom godišnje, najbolje pred letnju sezonu. Ako klima radi svakodnevno, ima kućne ljubimce ili je u kuhinji, pranje na šest meseci drži uređaj čistim i efikasnim.',
+  },
+  {
+    q: 'Koliko traje pranje klime?',
+    a: 'Pranje jedne split klime obično traje oko sat vremena, zavisno od zaprljanosti i pristupa spoljnoj jedinici.',
+  },
+  {
+    q: 'Da li perete i spoljnu jedinicu?',
+    a: 'Da. Peremo unutrašnju jedinicu (filtere, isparivač, ventilator i odvod kondenza) i spoljnu jedinicu (kondenzator), kada joj se može bezbedno prići.',
+  },
+  {
+    q: 'Kako da znam da je klimi potrebno pranje?',
+    a: 'Neprijatan ili ustajao miris, slabiji protok vazduha, slabije hlađenje i kapanje vode iz unutrašnje jedinice znaci su da je klimu vreme oprati.',
+  },
+];
+
+export function pranjeSeo(): SeoInput {
+  const path = '/pranje-klime-novi-sad';
+  const description =
+    'Pranje klime Novi Sad: dubinsko čišćenje unutrašnje i spoljne jedinice, filtera i isparivača. Dolazak na adresu, zakazivanje online ili telefonom.';
+  return {
+    title: 'Pranje klime Novi Sad',
+    description,
+    path,
+    jsonLd: [
+      organizationJsonLd(),
+      serviceJsonLd({
+        name: 'Pranje klime Novi Sad',
+        description,
+        path,
+        serviceType: 'Pranje i čišćenje klima uređaja',
+      }),
+      faqJsonLd(PRANJE_FAQ),
+      breadcrumbJsonLd([
+        { name: 'Početna', path: '/' },
+        { name: 'Servis klime Novi Sad', path: '/servis-klime-novi-sad' },
+        { name: 'Pranje klime Novi Sad', path },
       ]),
     ],
   };
